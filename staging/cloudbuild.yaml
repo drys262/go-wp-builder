@@ -46,7 +46,7 @@ steps:
         git config --global user.email "koeichavez17@gmail.com"
         git config --global user.name "Google Container Builder"
 
-        git clone "${_GITHUB_USERNAME}/wpbuilder-infrastructure-staging"
+        git clone "https://github.com/${_GITHUB_USERNAME}/wpbuilder-infrastructure-staging"
 
         cd wpbuilder-infrastructure-staging
 
