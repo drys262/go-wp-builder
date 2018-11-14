@@ -38,16 +38,21 @@ steps:
         path: /kube
 
 
-  - name: 'gcr.io/cloud-builders/git'
+  - name: 'gcr.io/hightowerlabs/hub'
     entrypoint: 'sh'
+    env:
+      - 'GITHUB_USERNAME=${_GITHUB_USERNAME}'
+      - 'GITHUB_PASSWORD=${_GITHUB_PASSWORD}'
     args:
       - '-c'
       - |
-        git config --global user.email "koeichavez17@gmail.com"
-        git config --global user.name "Google Container Builder"
+        hub config --global user.email "koeichavez17@gmail.com"
+        hub config --global user.name "Google Container Builder"
 
         # git clone "https://github.com/${_GITHUB_USERNAME}/wpbuilder-infrastructure-staging.git"
-        git clone https://github.com/drys262/wpbuilder-infrastructure-staging.git
+        # hub clone "https://github.com/drys262/wpbuilder-infrastructure-staging"
+        hub clone "${_GITHUB_USERNAME}/wpbuilder-infrastructure-staging"
+
 
         cd wpbuilder-infrastructure-staging
 
@@ -68,10 +73,10 @@ steps:
 
         mv gohello.yaml kubernetes/deployments/gohello.yaml
 
-        git add kubernetes/deployments/gohello.yaml
+        hub add kubernetes/deployments/gohello.yaml
 
 
-        git commit -F- <<EOF
+        hub commit -F- <<EOF
         Update the gohello application
 
         This commit updates the gohello deployment container image to:
@@ -84,8 +89,8 @@ steps:
 
         echo "BEFORE PUSH HERE"
         echo "BEFORE PUSH HERE"
-        git push origin master
-        
+        hub push origin master
+
 
     volumes:
       - name: 'kube'
