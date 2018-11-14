@@ -82,6 +82,12 @@ steps:
 
         git push origin master
 
+    volumes:
+      - name: 'config'
+        path: /config
+      - name: 'kube'
+        path: /kube
+
 images:
   - 'asia.gcr.io/${PROJECT_ID}/gohello:${SHORT_SHA}'
 
