@@ -6,3 +6,4 @@ RUN CGO_ENABLED=0 GOOS=linux go build .
 FROM scratch
 COPY --from=0 /go/src/github.com/dk/app/app .
 ENTRYPOINT ["/app"]
+
