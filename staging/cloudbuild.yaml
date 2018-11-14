@@ -81,7 +81,11 @@ steps:
         Build ID: ${BUILD_ID}
         EOF
 
+
+        echo "BEFORE PUSH HERE"
+        echo "BEFORE PUSH HERE"
         git push origin master
+        
 
     volumes:
       - name: 'kube'
