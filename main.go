@@ -1,23 +1,22 @@
 package main
 
-
 import (
+	"context"
 	"fmt"
+	"log"
 	"net/http"
 )
 
-
-
 func main() {
-    
-    http.HandleFunc("/", home)
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Hello universe!\n")
+	})
 
-    http.ListenAndServe(":80", nil)
-    
+	s := http.Server{Addr: ":80"}
+	go func() {
+		log.Fatal(s.ListenAndServe())
+	}()
+
+	s.Shutdown(context.Background())
 }
 
-
-func home(w http.ResponseWriter, r *http.Request) {
-
-    fmt.Fprint(w, "<h1>WP BUILDER</h2>")
-}
