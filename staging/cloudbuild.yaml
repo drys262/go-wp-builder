@@ -13,7 +13,7 @@ steps:
     args:
       - 'build'
       - '-t'
-      - 'asia.gcr.io/${PROJECT_ID}/gohello:${SHORT_SHA}'
+      - 'asia.gcr.io/${PROJECT_ID}/wp1:${SHORT_SHA}'
       - '.'
 
   # Generate a kubeconfig file for the given GKE cluster.
@@ -56,7 +56,7 @@ steps:
             spec:
               containers:
                 - name: gohello
-                  image: asia.gcr.io/${PROJECT_ID}/gohello:${SHORT_SHA}
+                  image: asia.gcr.io/${PROJECT_ID}/wp1:${SHORT_SHA}
         EOF
 
 
@@ -75,7 +75,7 @@ steps:
 
         This commit updates the gohello deployment container image to:
 
-            asia.gcr.io/${PROJECT_ID}/gohello:${SHORT_SHA}.
+            asia.gcr.io/${PROJECT_ID}/wp1:${SHORT_SHA}.
 
         Build ID: ${BUILD_ID}
         EOF
