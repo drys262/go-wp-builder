@@ -16,6 +16,24 @@ steps:
       - 'asia.gcr.io/${PROJECT_ID}/wp1:${SHORT_SHA}'
       - '.'
 
+  # Retrieve and decrypt the GitHub Hub configuration. 
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - |
+        gsutil cp gs://dkbucketsample/hub.enc hub.enc
+
+        gcloud kms decrypt \
+          --ciphertext-file hub.enc \
+          --plaintext-file /config/hub \
+          --location global \
+          --keyring token \
+          --key github_token
+    volumes:
+      - name: 'config'
+        path: /config
+
   # Generate a kubeconfig file for the given GKE cluster.
   - name: 'gcr.io/cloud-builders/kubectl'
     env:
@@ -41,7 +59,8 @@ steps:
   - name: 'gcr.io/${PROJECT_ID}/hub'
     entrypoint: 'sh'
     env:
-      - 'GITHUB_TOKEN=${_GITHUB_TOKEN}'
+      - 'HUB_CONFIG=/config/hub'
+      - 'KUBECONFIG=/kube/config'
     args:
       - '-c'
       - |
@@ -92,6 +111,8 @@ steps:
 
 
     volumes:
+      - name: 'config'
+        path: /config
       - name: 'kube'
         path: /kube
 
