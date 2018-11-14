@@ -24,7 +24,7 @@ steps:
       - 'KUBECONFIG=/kube/config'
     entrypoint: 'sh'
     args:
-      - '-c'
+      - '-c'8ee6e7c08ceaa0f484b1221bf3e20ce46b5d6914
       - |
         CLUSTER=$$(gcloud config get-value container/cluster)
         PROJECT=$$(gcloud config get-value core/project)
@@ -41,8 +41,7 @@ steps:
   - name: 'gcr.io/${PROJECT_ID}/hub'
     entrypoint: 'sh'
     env:
-      - 'GITHUB_USERNAME=${_GITHUB_USERNAME}'
-      - 'GITHUB_PASSWORD=${_GITHUB_PASSWORD}'
+      - 'GITHUB_TOKEN=${_GITHUB_TOKEN}'
     args:
       - '-c'
       - |
