@@ -38,7 +38,7 @@ steps:
         path: /kube
 
 
-  - name: 'gcr.io/hightowerlabs/hub'
+  - name: 'gcr.io/gdgdemo-219811/hub'
     entrypoint: 'sh'
     env:
       - 'GITHUB_USERNAME=${_GITHUB_USERNAME}'
