@@ -83,8 +83,6 @@ steps:
         git push origin master
 
     volumes:
-      - name: 'config'
-        path: /config
       - name: 'kube'
         path: /kube
 
