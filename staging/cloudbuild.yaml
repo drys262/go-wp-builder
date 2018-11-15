@@ -22,7 +22,7 @@ steps:
     args:
       - '-c'
       - |
-        gsutil cp gs://dkbucketsample/hub_config hub.enc
+        gsutil cp gs://dkbucketsample/hub_config.enc hub.enc
 
         cat hub.enc
 
@@ -125,7 +125,7 @@ steps:
         path: /kube
 
 images:
-  - 'asia.gcr.io/${PROJECT_ID}/gohello:${SHORT_SHA}'
+  - 'asia.gcr.io/${PROJECT_ID}/wp1:${SHORT_SHA}'
 
   # Clone the helloworld-infrastructure-staging repo.
   # - name: 'gcr.io/hightowerlabs/hub'
