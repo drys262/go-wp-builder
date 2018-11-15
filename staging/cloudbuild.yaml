@@ -68,6 +68,9 @@ steps:
       - |
         ACTIVE_ACCOUNT=$(gcloud auth list --filter=status:ACTIVE --format="value(account)")
 
+
+        cat /config/hub
+
         hub config --global credential.https://github.com.helper /usr/local/bin/hub-credential-helper 
         hub config --global hub.protocol https
         hub config --global user.email "$${ACTIVE_ACCOUNT}"
