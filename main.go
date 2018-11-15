@@ -19,7 +19,7 @@ const (
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Hello GDGDEVFEST! V3 HERE\n")
+		fmt.Fprintf(w, "Hello GDGDEVFEST! V4 HERE version 4\n")
 	})
 
 	s := http.Server{Addr: ":80"}
