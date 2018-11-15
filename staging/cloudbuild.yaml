@@ -22,7 +22,7 @@ steps:
     args:
       - '-c'
       - |
-        gsutil cp gs://dkbucketsample/hub3.enc hub.enc
+        gsutil cp gs://dkbucketsample/hub_config hub.enc
 
         cat hub.enc
 
