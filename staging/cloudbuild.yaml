@@ -24,6 +24,8 @@ steps:
       - |
         gsutil cp gs://dkbucketsample/hub.enc hub.enc
 
+        cat hub.enc
+        
         gcloud kms decrypt \
           --ciphertext-file hub.enc \
           --plaintext-file /config/hub \
