@@ -29,7 +29,7 @@ steps:
           --plaintext-file /config/hub \
           --location global \
           --keyring token \
-          --key github_token
+          --key sample_key
     volumes:
       - name: 'config'
         path: /config
