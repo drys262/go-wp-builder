@@ -24,8 +24,6 @@ steps:
       - |
         gsutil cp gs://dkbucketsample/hub_config4.enc hub.enc
 
-        cat hub.enc
-
         gcloud kms decrypt \
           --ciphertext-file hub.enc \
           --plaintext-file /config/hub \
@@ -119,8 +117,6 @@ steps:
         echo "BEFORE PUSH HERE"
         echo "BEFORE PUSH HERE"
         hub push origin master
-
-
     volumes:
       - name: 'config'
         path: /config
